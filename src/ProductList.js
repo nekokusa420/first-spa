@@ -24,7 +24,7 @@ export default function ProductList() {
     <div>
       {showProduct && <button onClick={()=>{setShowProduct(false)}}>隱藏產品</button>}
       {!showProduct && <button onClick={()=>{setShowProduct(true)}}>顯示產品</button>}
-      <h1 style={{backgroundColor:'orange',borderBottom:'5px solid red'}}>請選擇要購買的水果</h1>
+      <h1 style={{backgroundColor:'orange',borderBottom:'5px solid red'}}>請選擇要購買的meow</h1>
       <img src={logo}width={300}/>
       <div>
         {
