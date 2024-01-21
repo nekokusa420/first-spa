@@ -13,22 +13,22 @@ export default function ProductList() {
         {"id" : 6, "name" : "白蘿蔔", "price" : 5, "image" : "white-carrot.png", "description" : "新鮮白蘿蔔1公斤, 宜煲湯"}
     ]
 
-    //let product = '水果'
-    const [product,setProduct] = useState('水果')
+    const[showProduct, setShowProduct] = useState(false)
 
-    const handleClick = ()=>{
-          setProduct('react')
-          console.log(product)
-    }
+    // const handleClick = ()=>{
+    //       setProduct('react')
+    //       console.log(product)
+    // }
 
   return (
     <div>
-      {product}<button onClick={handleClick}>改變變數數值</button>
+      {showProduct && <button onClick={()=>{setShowProduct(false)}}>隱藏產品</button>}
+      {!showProduct && <button onClick={()=>{setShowProduct(true)}}>顯示產品</button>}
       <h1 style={{backgroundColor:'orange',borderBottom:'5px solid red'}}>請選擇要購買的水果</h1>
       <img src={logo}width={300}/>
       <div>
         {
-          productList.map(product=>(
+          showProduct && productList.map(product=>(
             // <div className="productBorder" key={product.id}>
             <div className={styles.productBorder} key={product.id}>
             {product.name}<br/>
