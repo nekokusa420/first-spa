@@ -9,11 +9,7 @@ export default function Title({mainTitle, subTitle}) {
             </h1>
             <h6>
             {subTitle}
-
             </h6>
-            
-
-
-    </div>
+      </div>
   )
 }

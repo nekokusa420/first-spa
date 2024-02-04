@@ -19,7 +19,6 @@ function App() {
               <Route path = ":id" element = {<ProductDetail/>}/>
              </Route>
 
-
         </Routes>  
         
         <center><Link to = "/"className="link-spacing">返回主頁</Link></center>

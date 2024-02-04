@@ -16,6 +16,10 @@ export default function ProductList() {
         {"id" : 6, "name" : "白蘿蔔", "price" : 5, "image" : "white-carrot.png", "description" : "新鮮白蘿蔔1公斤, 宜煲湯"}
     ]
 
+fetch('https://hoyinleung.github.io/demoapi/react-basic-product.json')
+    .then(respone => respone.json())
+    .then(data => console.log(data))
+
     const[showProduct, setShowProduct] = useState(true)
 
     // const handleClick = ()=>{
