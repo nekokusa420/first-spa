@@ -6,20 +6,26 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>
-      <Link to = "/">MainPage</Link>
-      <Link to = "/product_list">ProductList</Link>     
-      <Link to = "/checkout">Checkout</Link>     
-      <Link to = "/product_detail">ProductDetail</Link>
-
-
+    <center>
+      <Link to = "/"className="link-spacing">MainPage</Link>
+      <Link to = "/checkout"className="link-spacing">Checkout</Link>     
+      </center>
+      
         <Routes>
-             <Route path = "product_list" element = {<ProductList/>} />
+             <Route path = "/" element = {<ProductList/>} />
              <Route path = "checkout" element = {<Checkout/>} />
-             <Route path = "product_detail" element = {<ProductDetail/>} />
-             <Route path = "*" element = {<p>找不到網頁</p>} />
+
+             <Route path = "/product" element = {<ProductDetail/>}>
+              <Route path = ":id" element = {<ProductDetail/>}/>
+             </Route>
+
 
         </Routes>  
+        
+        <center><Link to = "/"className="link-spacing">返回主頁</Link></center>
+
     </BrowserRouter>
+    
   )
 }
 
