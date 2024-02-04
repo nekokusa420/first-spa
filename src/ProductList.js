@@ -1,9 +1,12 @@
 import React from 'react'
-
 import logo from './React-icon.svg.png'
 import styles from './ProductList.module.css'
 import {useState} from "react" //ReactHook
+import {Link} from "react-router-dom"
+import Title from './Title'
+
 export default function ProductList() {
+
     let productList = [
         {"id" : 1, "name" : "蘋果", "price" : 5,"image" : "apple.jpeg","description" : "新鮮蘋果50克, 一日一蘋果, 醫生遠離我"},
         {"id" : 2, "name" : "橙", "price" : 3,"image" : "orange.jpeg","description" : "新鮮橙50克, 又甜又好吃"},
@@ -13,19 +16,18 @@ export default function ProductList() {
         {"id" : 6, "name" : "白蘿蔔", "price" : 5, "image" : "white-carrot.png", "description" : "新鮮白蘿蔔1公斤, 宜煲湯"}
     ]
 
-    const[showProduct, setShowProduct] = useState(false)
+    const[showProduct, setShowProduct] = useState(true)
 
     // const handleClick = ()=>{
     //       setProduct('react')
     //       console.log(product)
     // }
 
-  return (
-    <div>
-      {showProduct && <button onClick={()=>{setShowProduct(false)}}>隱藏產品</button>}
-      {!showProduct && <button onClick={()=>{setShowProduct(true)}}>顯示產品</button>}
-      <h1 style={{backgroundColor:'orange',borderBottom:'5px solid red'}}>請選擇要購買的水果</h1>
-      <img src={logo}width={300}/>
+return (
+  <div>
+    <Title mainTitle = "請選擇要購買的水果" subTitle = '今日有九折'/>
+    {showProduct && <button onClick={()=>{setShowProduct(false)}}>隱藏產品</button>}
+    {!showProduct && <button onClick={()=>{setShowProduct(true)}}>顯示產品</button>}
       <div>
         {
           showProduct && productList.map(product=>(
@@ -33,12 +35,18 @@ export default function ProductList() {
             <div className={styles.productBorder} key={product.id}>
             {product.name}<br/>
               {product.price}<br/>
+
+              <Link to = {'/product/'+product.id}>
               <img src={process.env.PUBLIC_URL+'/img/'+product.image}width={300}/><br/>
+              </Link>
+
               {product.description}<br/>
             </div>
           ))
         }
       </div>
+      <img src={logo}width={300}/>
+
     </div>
   )
 }

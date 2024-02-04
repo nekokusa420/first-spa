@@ -16,4 +16,9 @@ code {
   border:5px solid green;
   margin:20px 0px;
 }
+
+.link-spacing {
+  margin-right: 1em;
+}
+
 /*global style*/
