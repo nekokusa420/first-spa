@@ -11,7 +11,7 @@ export default function checkout() {
         image: "blueberry.webp",
         price: 10,
         description: "新鮮藍梅50克, 補眼之寶",
-        quantyty: 3,
+        quantity: 3,
       },
       {
         "id:": 4,
@@ -19,13 +19,18 @@ export default function checkout() {
         image: "watermelon.jpeg",
         price: 20,
         description: "新鮮西瓜2公斤, 夏季必備",
-        quantyty: 6,
+        quantity: 0,
       },
     ],
   };
 
   let { cartItems } = cartItem;
   let cartEmpty = cartItems.length <= 0 ? true : false;
+
+  let grandTotal = cartItems.reduce((total, product) => {
+    return (total += product.price * product.quantity);
+  }, 0); //reduce計Total
+  const freeShippingPrice = 99; //滿$99免費送貨
 
   return (
     <div>
@@ -61,7 +66,19 @@ export default function checkout() {
               ))
             }
           </div>
-          <div id="checkOutSection">{/*價錢總數+免費送貨*/}</div>
+          <div id="checkOutSection">
+            <div>全部貨品總共</div>
+            <div>{grandTotal}元</div>
+
+            {
+              grandTotal>=freeShippingPrice?
+              <div>我們免費送貨</div>:
+              <div>滿${freeShippingPrice}免費送貨<br/>還差${freeShippingPrice-grandTotal}</div>
+              
+              }
+
+            {/*價錢總數+免費送貨*/}
+          </div>
         </div>
       )}
     </div>

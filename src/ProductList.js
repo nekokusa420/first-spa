@@ -4,6 +4,7 @@ import styles from "./ProductList.module.css";
 import { useState, useEffect } from "react"; //ReactHook
 import { Link } from "react-router-dom";
 import Title from "./Title";
+import QuantityBtn from "./QuantityBtn";
 
 export default function ProductList() {
   let [productList, setProductList] = useState([]);
@@ -68,6 +69,7 @@ export default function ProductList() {
 
               {product.description}
               <br />
+              <QuantityBtn />
             </div>
           ))}
       </div>
