@@ -15,7 +15,7 @@ useEffect(()=>{
   //3 : Dependency Array是有變數時 : 第一次網頁render時 + 指定的變數改變 會觸發
 
 
-  fetch('https://raw.githubusercontent.com/nekokusa420/first-spa/main/src/react-basic-product.json?token=GHSAT0AAAAAACNYMENPEQZEEJ3TKDX4IV3CZN7LLGA')
+  fetch('https://nekokusa420.github.io/itdog/data.json')
   .then(respone => respone.json())
   .then(data => setProductList(data))
 
