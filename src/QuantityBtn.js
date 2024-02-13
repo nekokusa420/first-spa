@@ -1,16 +1,31 @@
 import React, { useState } from "react";
 
 export default function QuantityBtn() {
-  let [numInCart, setNumInCark] = useState();
+  let [numInCart, setNumInCark] = useState(0);
+
+  const handleAdd = () => {
+    setNumInCark(numInCart + 1);
+  };
+
+  const handleSubtract = () => {
+    setNumInCark(numInCart - 1);
+  };
 
   return (
     <div>
       {numInCart === 0 ? (
-        <div>加入購物車</div>
+        <button id="hover-button" onClick={handleAdd}>
+          加入購物車
+        </button>
       ) : (
         <div>
-          <span>-</span>
-          {numInCart}件<span>+</span>
+          <button id="hover-button" onClick={handleSubtract}>
+            -
+          </button>
+          {numInCart}件
+          <button id="hover-button" onClick={handleAdd}>
+            +
+          </button>
         </div>
       )}
     </div>

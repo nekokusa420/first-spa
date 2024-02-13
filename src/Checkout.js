@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Title from "./Title";
+import QuantityBtn from "./QuantityBtn";
 
 export default function checkout() {
   let cartItem = {
@@ -19,7 +20,7 @@ export default function checkout() {
         image: "watermelon.jpeg",
         price: 20,
         description: "新鮮西瓜2公斤, 夏季必備",
-        quantity: 0,
+        quantity: 6,
       },
     ],
   };
@@ -62,6 +63,7 @@ export default function checkout() {
                   {product.price}
                   {product.description}
                   購買數量{product.quantyty}
+                  <QuantityBtn/>
                 </div>
               ))
             }

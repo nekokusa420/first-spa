@@ -8,6 +8,8 @@ import QuantityBtn from "./QuantityBtn";
 
 export default function ProductList() {
   let [productList, setProductList] = useState([]);
+  const quantityBtn = document.getElementById("quantityBtn");
+
 
   useEffect(() => {
     //1 : 無第二個參數 : component每次render都會觸法
