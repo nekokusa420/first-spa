@@ -10,13 +10,12 @@ export default function ProductList() {
   let [productList, setProductList] = useState([]);
   const quantityBtn = document.getElementById("quantityBtn");
 
-
   useEffect(() => {
     //1 : 無第二個參數 : component每次render都會觸法
     //2 : Dependency Array是空array時 : 只會在第一次網頁render時觸發
     //3 : Dependency Array是有變數時 : 第一次網頁render時 + 指定的變數改變 會觸發
 
-    fetch("https://nekokusa420.github.io/itdog/data.json")
+    fetch("https://nekokusa420.github.io/itdog/react-basic-product.json")
       .then((respone) => respone.json())
       .then((data) => setProductList(data));
 
@@ -57,21 +56,17 @@ export default function ProductList() {
             // <div className="productBorder" key={product.id}>
             <div className={styles.productBorder} key={product.id}>
               {product.name}
-              <br />
               {product.price}
-              <br />
 
               <Link to={"/product/" + product.id}>
                 <img
                   src={process.env.PUBLIC_URL + "/img/" + product.image}
                   width={300}
                 />
-                <br />
               </Link>
 
               {product.description}
-              <br />
-              <QuantityBtn />
+              <QuantityBtn productInfo={product} />
             </div>
           ))}
       </div>

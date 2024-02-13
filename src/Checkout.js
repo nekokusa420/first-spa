@@ -1,31 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useActionData } from "react-router-dom";
 import Title from "./Title";
+import { CartContext } from "./CartContext";
 import QuantityBtn from "./QuantityBtn";
 
-export default function checkout() {
-  let cartItem = {
-    cartItems: [
-      {
-        "id:": 5,
-        name: "藍梅",
-        image: "blueberry.webp",
-        price: 10,
-        description: "新鮮藍梅50克, 補眼之寶",
-        quantity: 3,
-      },
-      {
-        "id:": 4,
-        name: "西瓜",
-        image: "watermelon.jpeg",
-        price: 20,
-        description: "新鮮西瓜2公斤, 夏季必備",
-        quantity: 6,
-      },
-    ],
-  };
-
-  let { cartItems } = cartItem;
+export default function Checkout() {
+  let { cartItems } = useContext(CartContext);
   let cartEmpty = cartItems.length <= 0 ? true : false;
 
   let grandTotal = cartItems.reduce((total, product) => {
@@ -51,35 +31,38 @@ export default function checkout() {
       {!cartEmpty && (
         <div>
           <div id="cartSection">
-            {
-              /*產品列表*/
-              cartItems.map((product) => (
-                <div key={product.id}>
-                  <img
-                    src={process.env.PUBLIC_URL + "/img/" + product.image}
-                    width={300}
-                  />
-                  {product.name}
-                  {product.price}
-                  {product.description}
-                  購買數量{product.quantyty}
-                  <QuantityBtn/>
-                </div>
-              ))
-            }
+            {cartItems.map((product) => (
+              <div key={product.id}>
+                <br />
+                <img
+                  src={process.env.PUBLIC_URL + "/img/" + product.image}
+                  width={300}
+                />
+                <br />
+                {product.name}
+                <br /> {product.price}
+                <br />
+                {product.description}
+                <br />
+                購買數量{product.quantity} <QuantityBtn productInfo={product} />
+              </div>
+            ))}
           </div>
           <div id="checkOutSection">
             <div>全部貨品總共</div>
             <div>{grandTotal}元</div>
 
-            {
-              grandTotal>=freeShippingPrice?
-              <div>我們免費送貨</div>:
-              <div>滿${freeShippingPrice}免費送貨<br/>還差${freeShippingPrice-grandTotal}</div>
-              
-              }
+            {grandTotal >= freeShippingPrice ? (
+              <div>我們免費送貨</div>
+            ) : (
+              <div>
+                滿${freeShippingPrice}免費送貨
+                <br />
+                還差${freeShippingPrice - grandTotal}
+              </div>
+            )}
 
-            {/*價錢總數+免費送貨*/}
+            {/* 價錢總數+免費送貨 */}
           </div>
         </div>
       )}
