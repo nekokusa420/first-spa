@@ -18,8 +18,6 @@ export default function ProductList() {
     fetch("https://nekokusa420.github.io/itdog/react-basic-product.json")
       .then((respone) => respone.json())
       .then((data) => setProductList(data));
-
-    console.log(productList);
   }, []);
 
   const [showProduct, setShowProduct] = useState(true);
@@ -62,7 +60,8 @@ export default function ProductList() {
                 <img
                   src={process.env.PUBLIC_URL + "/img/" + product.image}
                   width={300}
-                />
+                  alt={product.name}
+                />{" "}
               </Link>
 
               {product.description}

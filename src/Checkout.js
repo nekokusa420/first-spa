@@ -33,16 +33,14 @@ export default function Checkout() {
           <div id="cartSection">
             {cartItems.map((product) => (
               <div key={product.id}>
-                <br />
                 <img
                   src={process.env.PUBLIC_URL + "/img/" + product.image}
+                  alt={product.name}
                   width={300}
                 />
-                <br />
                 {product.name}
-                <br /> {product.price}
-                <br />
                 {product.description}
+                {product.price}
                 <br />
                 購買數量{product.quantity} <QuantityBtn productInfo={product} />
               </div>
