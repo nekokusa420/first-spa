@@ -22,7 +22,7 @@ export default function QuantityBtn({ productInfo }) {
         {
           id: productInfo.id,
           name: productInfo.name,
-          image: productInfo.name,
+          image: productInfo.image,
           price: productInfo.price,
           description: productInfo.description,
           quantity: 1,
