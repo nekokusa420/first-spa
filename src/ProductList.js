@@ -63,7 +63,7 @@ export default function ProductList() {
                   alt={product.name}
                 />{" "}
               </Link>
-
+              <br />
               {product.description}
               <QuantityBtn productInfo={product} />
             </div>

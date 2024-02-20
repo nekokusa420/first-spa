@@ -5,19 +5,19 @@ export default function QuantityBtn({ productInfo }) {
   const { cartItems, setCartItems } = useContext(CartContext);
 
   //購物車內有冇該產品
-  let productIndextInCart = cartItems.findIndex((element) => {
+  let productIndexInCart = cartItems.findIndex((element) => {
     return element.id === productInfo.id;
   });
   //findIndex
   //購物車有該產品 => 返回索引位置
   //沒有加入過購物車 => 返回-1
 
-  let [numInCart, setNumInCark] = useState(
-    productIndextInCart === -1 ? 0 : cartItems[productIndextInCart].quantity
+  let [numInCart, setNumInCart] = useState(
+    productIndexInCart === -1 ? 0 : cartItems[productIndexInCart].quantity
   );
 
   const handleAdd = () => {
-    if (productIndextInCart === -1) {
+    if (productIndexInCart === -1) {
       setCartItems([
         {
           id: productInfo.id,
@@ -31,24 +31,24 @@ export default function QuantityBtn({ productInfo }) {
       ]);
     } else {
       let newCartArray = [...cartItems];
-      newCartArray[productIndextInCart].quantity++;
+      newCartArray[productIndexInCart].quantity++;
       setCartItems(newCartArray);
     }
-    setNumInCark(numInCart + 1);
+    setNumInCart(numInCart + 1);
   };
 
   const handleSubtract = () => {
-    if (productIndextInCart === 1) {
+    if (cartItems[productIndexInCart].quantity === 1) {
       let newCartArray = [...cartItems];
-      newCartArray.splice(productIndextInCart, 1);
+      newCartArray.splice(productIndexInCart, 1);
       setCartItems(newCartArray);
     } else {
       let newCartArray = [...cartItems];
-      newCartArray[productIndextInCart].quantity--;
+      newCartArray[productIndexInCart].quantity--;
       setCartItems(newCartArray);
     }
 
-    setNumInCark(numInCart - 1);
+    setNumInCart(numInCart - 1);
   };
 
   return (
