@@ -19,7 +19,7 @@ export default function ProductDetail() {
   }, []);
 
   return (
-    <div>
+    <>
       {productDetail && (
         <div>
           <Title mainTitle={productDetail.name + "產品資料"} />
@@ -34,6 +34,6 @@ export default function ProductDetail() {
           <QuantityBtn productInfo={productDetail} />
         </div>
       )}
-    </div>
+    </>
   );
 }

@@ -28,7 +28,7 @@ export default function ProductList() {
   // }
 
   return (
-    <div>
+    <>
       <Title mainTitle="請選擇要購買的水果" subTitle="今日有九折" />
       {showProduct && (
         <button
@@ -52,24 +52,26 @@ export default function ProductList() {
         {showProduct &&
           productList.map((product) => (
             // <div className="productBorder" key={product.id}>
-            <div className={styles.productBorder} key={product.id}>
-              {product.name}
-              {product.price}
+            <React.Fragment key={product.id}>
+              <div className={styles.productBorder}>
+                {product.name}
+                {product.price}
 
-              <Link to={"/product/" + product.id}>
-                <img
-                  src={process.env.PUBLIC_URL + "/img/" + product.image}
-                  width={300}
-                  alt={product.name}
-                />{" "}
-              </Link>
-              <br />
-              {product.description}
-              <QuantityBtn productInfo={product} />
-            </div>
+                <Link to={"/product/" + product.id}>
+                  <img
+                    src={process.env.PUBLIC_URL + "/img/" + product.image}
+                    width={300}
+                    alt={product.name}
+                  />{" "}
+                </Link>
+                <br />
+                {product.description}
+                <QuantityBtn productInfo={product} />
+              </div>
+            </React.Fragment>
           ))}
       </div>
       <img src={logo} width={300} />
-    </div>
+    </>
   );
 }
