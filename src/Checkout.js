@@ -49,7 +49,7 @@ export default function Checkout() {
                     <td>{product.price}</td>
                     <br />
                     <td width="200">
-                      購買數量{product.quantity}
+                      {/* 購買數量{product.quantity} */}
                       <QuantityBtn productInfo={product} />
                     </td>
                     <td>
