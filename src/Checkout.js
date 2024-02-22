@@ -19,33 +19,50 @@ export default function Checkout() {
 
       {cartEmpty && (
         <div>
-          <center>
-            <p>購物車現在沒有商品</p>
+          <div className="nothingInCart">
+            購物車現在沒有商品
+            <br />
+            <br />
             <Link to="/" className="link-spacing">
               去產品頁看看吧
             </Link>
-          </center>
+          </div>
         </div>
       )}
 
       {!cartEmpty && (
-        <div>
-          <div id="cartSection">
-            {cartItems.map((product) => (
-              <div key={product.id}>
-                <img
-                  src={process.env.PUBLIC_URL + "/img/" + product.image}
-                  alt={product.name}
-                  width={300}
-                />
-                {product.name}
-                {product.description}
-                {product.price}
-                <br />
-                購買數量{product.quantity} <QuantityBtn productInfo={product} />
-              </div>
-            ))}
+        <div className="productBorder">
+          <div className="cartSection">
+            <table className="checkoutTable">
+              <tbody>
+                {cartItems.map((product) => (
+                  <tr key={product.id}>
+                    <td>
+                      <img
+                        src={process.env.PUBLIC_URL + "/img/" + product.image}
+                        alt={product.name}
+                        width={300}
+                      />
+                    </td>
+                    <td>{product.name}</td>
+                    <td>{product.description}</td>
+                    <td>{product.price}</td>
+                    <br />
+                    <td width="200">
+                      購買數量{product.quantity}
+                      <QuantityBtn productInfo={product} />
+                    </td>
+                    <td>
+                      <div className="productSubTotal">
+                        ${product.price * product.quantity}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+
           <div id="checkOutSection">
             <div>全部貨品總共</div>
             <div>{grandTotal}元</div>

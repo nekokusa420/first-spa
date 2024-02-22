@@ -10,28 +10,21 @@ function App() {
   return (
     <BrowserRouter>
       <CartContext.Provider value={{ cartItems, setCartItems }}>
-        <Link to="/" className="link-spacing">
-          MainPage
-        </Link>
-        <Link to="/checkout" className="link-spacing">
-          Checkout
-        </Link>
+        <nav>
+          <Link to="/">首頁</Link>
+          <Link to="/checkout">購物車</Link>
+        </nav>
 
         <Routes>
           <Route path="/" element={<ProductList />} />
-
           <Route path="checkout" element={<Checkout />} />
 
           <Route path="/product" element={<ProductDetail />}>
             <Route path=":id" element={<ProductDetail />} />
           </Route>
-        </Routes>
 
-        <center>
-          <Link to="/" className="link-spacing">
-            返回主頁
-          </Link>
-        </center>
+          <Route path="*" element={<p>找不到頁面</p>} />
+        </Routes>
       </CartContext.Provider>
     </BrowserRouter>
   );

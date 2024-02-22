@@ -1,8 +1,3 @@
-.productBorder {
-  border: 5px solid purple;
-  margin: 20px 0px;
-}
-
 .hover-button {
   background-color: blue;
   color: white;
@@ -14,4 +9,25 @@
 
 .hover-button:hover {
   background-color: darkblue;
+}
+
+.productName {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 24px
+}
+
+
+.productBorderItem {
+  border: 3px solid #f7f7f7;
+  border-radius: 7px;
+  width: 300px;
+  margin: 5px;
+  text-align: center;
+  background-color: antiquewhite;
+  padding: 10px 10px;
+}
+
+.productBorderItem:hover {
+  background-color: rgb(221, 255, 228);
 }

@@ -1,14 +1,15 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"; //React Hook
 import logo from "./React-icon.svg.png";
 import styles from "./ProductList.module.css";
-import { useState, useEffect } from "react"; //ReactHook
-import { Link } from "react-router-dom";
 import Title from "./Title";
 import QuantityBtn from "./QuantityBtn";
 
 export default function ProductList() {
   let [productList, setProductList] = useState([]);
   const quantityBtn = document.getElementById("quantityBtn");
+
+  //useEffect hook
 
   useEffect(() => {
     //1 : 無第二個參數 : component每次render都會觸法
@@ -48,24 +49,22 @@ export default function ProductList() {
           顯示產品
         </button>
       )}
-      <div>
+      <div className="productBorder">
         {showProduct &&
           productList.map((product) => (
             // <div className="productBorder" key={product.id}>
             <React.Fragment key={product.id}>
-              <div className={styles.productBorder}>
-                {product.name}
-                {product.price}
-
+              <div className={styles.productBorderItem}>
                 <Link to={"/product/" + product.id}>
                   <img
                     src={process.env.PUBLIC_URL + "/img/" + product.image}
-                    width={300}
                     alt={product.name}
-                  />{" "}
+                  />
                 </Link>
-                <br />
-                {product.description}
+                <div className="productName">
+                  {product.name} - {product.price}元/件
+                </div>
+
                 <QuantityBtn productInfo={product} />
               </div>
             </React.Fragment>

@@ -16,24 +16,40 @@ export default function ProductDetail() {
         });
         setProductDetail(productInfo);
       });
-  }, []);
+  }, [params.id]); // <==  Dependency Array
 
   return (
     <>
       {productDetail && (
-        <div>
+        <div className="ProductDetail">
           <Title mainTitle={productDetail.name + "產品資料"} />
-          <img
-            src={process.env.PUBLIC_URL + "/img/" + productDetail.image}
-            width={300}
-            alt={productDetail.name}
-          />
-          <p>名稱：{productDetail.name}</p>
-          <p>售價：{productDetail.price}</p>
-          <p>描述：{productDetail.description}</p>
-          <QuantityBtn productInfo={productDetail} />
+
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td align="right">
+                  <img
+                    src={process.env.PUBLIC_URL + "/img/" + productDetail.image}
+                    width={400}
+                    alt={productDetail.name}
+                  />
+                </td>
+                <td width="45%" padding="10">
+                  <p>名稱：{productDetail.name}</p>
+                  <p>售價：{productDetail.price}元</p>
+                  <p>描述：{productDetail.description}</p>
+                  <br />
+                  <QuantityBtn productInfo={productDetail} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )}
+
+      <Link to="/">
+        <div className="backToGoodsListBtn">↩️ 返回商品列表</div>
+      </Link>
     </>
   );
 }
