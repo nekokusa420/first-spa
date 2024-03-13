@@ -78,7 +78,6 @@ export default function Checkout() {
 
             {/* 價錢總數+免費送貨 */}
           </div>
-          
         </div>
       )}
     </>

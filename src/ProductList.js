@@ -7,7 +7,6 @@ import QuantityBtn from "./QuantityBtn";
 
 export default function ProductList() {
   let [productList, setProductList] = useState([]);
-  const quantityBtn = document.getElementById("quantityBtn");
 
   //useEffect hook
 
