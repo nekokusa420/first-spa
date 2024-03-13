@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react"; //React Hook
-import logo from "./React-icon.svg.png";
 import styles from "./ProductList.module.css";
 import Title from "./Title";
 import QuantityBtn from "./QuantityBtn";
@@ -69,7 +68,6 @@ export default function ProductList() {
             </React.Fragment>
           ))}
       </div>
-      <img src={logo} width={300} />
     </>
   );
 }
